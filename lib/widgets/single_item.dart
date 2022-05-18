@@ -70,7 +70,7 @@ class SingleItem extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      '$productPrice\$',
+                                      '$productPrice',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 14,
@@ -87,7 +87,7 @@ class SingleItem extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : Text('$productPrice\$'),
+                          : Text('$productPrice'),
                     ],
                   ),
                 ),
