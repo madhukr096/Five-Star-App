@@ -56,6 +56,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
               (FoodProductData) {
                 return SingalFoodProduct(
                   onTap: () {},
+                  productId: FoodProductData.productId,
                   productImage: FoodProductData.productImage,
                   productName: FoodProductData.productName,
                   productDetails: FoodProductData.productDetails,
@@ -79,7 +80,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'First Order',
+                'Food',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               GestureDetector(
@@ -106,11 +107,13 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
             children: productProvider.getFoodProduct1DataList.map(
               (FoodProduct1Data) {
                 return SingalFoodProduct(
-                    onTap: () {},
-                    productImage: FoodProduct1Data.productImage,
-                    productName: FoodProduct1Data.productName,
-                    productDetails: FoodProduct1Data.productDetails,
-                    price: FoodProduct1Data.productPrice);
+                  onTap: () {},
+                  productImage: FoodProduct1Data.productImage,
+                  productName: FoodProduct1Data.productName,
+                  productDetails: FoodProduct1Data.productDetails,
+                  price: FoodProduct1Data.productPrice,
+                  productId: FoodProduct1Data.productId,
+                );
               },
             ).toList(),
           ),
@@ -119,7 +122,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
     );
   }
 
-  Widget _buildFoodProduct3(context) {
+  Widget _buildFoodProduct3() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -156,11 +159,13 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
             children: productProvider.getFoodProduct2DataList.map(
               (FoodProduct2Data) {
                 return SingalFoodProduct(
-                    onTap: () {},
-                    productImage: FoodProduct2Data.productImage,
-                    productName: FoodProduct2Data.productName,
-                    productDetails: FoodProduct2Data.productDetails,
-                    price: FoodProduct2Data.productPrice);
+                  onTap: () {},
+                  productImage: FoodProduct2Data.productImage,
+                  productName: FoodProduct2Data.productName,
+                  productDetails: FoodProduct2Data.productDetails,
+                  price: FoodProduct2Data.productPrice,
+                  productId: FoodProduct2Data.productId,
+                );
               },
             ).toList(),
           ),
@@ -308,7 +313,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
             ),
             _buildFoodProduct1(context),
             _buildFoodProduct2(context),
-            _buildFoodProduct3(context),
+            _buildFoodProduct3(),
           ],
         ),
       ),

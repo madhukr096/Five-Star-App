@@ -8,13 +8,11 @@ class Count extends StatefulWidget {
   late String productName;
   late String productId;
   late int productPrice;
-  late String productQuality;
   Count({
     required this.productName,
     required this.productId,
     required this.productImage,
     required this.productPrice,
-    required this.productQuality,
   });
   @override
   State<Count> createState() => _CountState();
@@ -25,6 +23,7 @@ class _CountState extends State<Count> {
   bool isTrue = false;
   @override
   Widget build(BuildContext context) {
+    print(widget.productId);
     ReviewCartProvider reviewCartProvider = Provider.of(context);
     return Container(
       height: 25,
@@ -85,6 +84,13 @@ class _CountState extends State<Count> {
                   setState(() {
                     isTrue = true;
                   });
+                  reviewCartProvider.addReviewCartData(
+                    cartId: widget.productId,
+                    cartImage: widget.productImage,
+                    cartName: widget.productName,
+                    cartPrice: widget.productPrice,
+                    cartQuantity: count,
+                  );
                 },
                 child: Text(
                   "ADD",

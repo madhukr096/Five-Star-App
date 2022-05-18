@@ -8,7 +8,7 @@ class ReviewCartProvider with ChangeNotifier {
     required String cartName,
     required String cartId,
     required int cartPrice,
-    required String cartQuantity,
+    required int cartQuantity,
   }) async {
     await FirebaseFirestore.instance
         .collection("ReviewCart")

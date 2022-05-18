@@ -56,11 +56,11 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
               (GroceryProductData) {
                 return SingalGroceryProduct(
                   onTap: () {},
+                  productId: GroceryProductData.productId,
                   productImage: GroceryProductData.productImage,
                   productName: GroceryProductData.productName,
                   productDetails: GroceryProductData.productDetails,
                   price: GroceryProductData.productPrice,
-                  productId: GroceryProductData.productId,
                 );
               },
             ).toList(),
@@ -122,7 +122,7 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
     );
   }
 
-  Widget _buildGroceryProduct3(context) {
+  Widget _buildGroceryProduct3() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -313,7 +313,7 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
             ),
             _buildGroceryProduct1(context),
             _buildGroceryProduct2(context),
-            _buildGroceryProduct3(context),
+            _buildGroceryProduct3(),
           ],
         ),
       ),

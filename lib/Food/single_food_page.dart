@@ -9,7 +9,6 @@ class SingalFoodProduct extends StatelessWidget {
   final Function onTap;
   final int price;
   final String productId;
-
   SingalFoodProduct(
       {required this.productImage,
       required this.productName,
@@ -108,7 +107,6 @@ class SingalFoodProduct extends StatelessWidget {
                               productName: productName,
                               productImage: productImage,
                               productPrice: price,
-                              productQuality: '1',
                             ),
                           ],
                         ),

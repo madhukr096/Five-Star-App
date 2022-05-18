@@ -107,7 +107,6 @@ class SingalGroceryProduct extends StatelessWidget {
                               productName: productName,
                               productImage: productImage,
                               productPrice: price,
-                              productQuality: '1',
                             ),
                           ],
                         ),
