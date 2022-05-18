@@ -55,46 +55,14 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
             children: productProvider.getFoodProductDataList.map(
               (FoodProductData) {
                 return SingalFoodProduct(
-                    onTap: () {},
-                    productImage: FoodProductData.productImage,
-                    productName: FoodProductData.productName,
-                    productDetails: FoodProductData.productDetails,
-                    price: FoodProductData.productPrice);
+                  onTap: () {},
+                  productImage: FoodProductData.productImage,
+                  productName: FoodProductData.productName,
+                  productDetails: FoodProductData.productDetails,
+                  price: FoodProductData.productPrice,
+                );
               },
             ).toList(),
-
-            /*children: [ SingalGroceryProduct(
-                  onTap: () {},
-                  productImage:
-                      'https://freepngimg.com/thumb/coconut/10-2-coconut-png-clipart.png',
-                  productName: 'Coconut',
-                  productDetails: '1 pc-22',
-                  price: '22'),
-              SingalGroceryProduct(
-                productImage:
-                    'https://freepngimg.com/thumb/onion/33971-5-red-onion-clipart.png',
-                productName: 'Onion',
-                productDetails: '1kg-19rs',
-                price: '19',
-                onTap: () {},
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://freepngimg.com/thumb/potato/11-potato-png-images-pictures-download.png',
-                productName: 'Potato',
-                productDetails: '1kg-70',
-                price: '70',
-                onTap: () {},
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://i.pinimg.com/originals/3c/42/5a/3c425a418d2c6b4670ee7d47c799a80d.png',
-                productName: 'Green Chilli',
-                productDetails: '1kg-Rs:100',
-                price: '100',
-                onTap: () {},
-              ),
-            ],*/
           ),
         ),
       ],
@@ -145,40 +113,6 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
                     price: FoodProduct1Data.productPrice);
               },
             ).toList(),
-            /*children: [
-              SingalGroceryProduct(
-                onTap: () {},
-                productImage:
-                    'https://www.pngmart.com/files/15/Fresh-Beans-Vegetable-Transparent-PNG.png',
-                productName: 'Stringless Beans',
-                productDetails: '1kg-20',
-                price: '20',
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://pngimg.com/uploads/carrot/carrot_PNG4985.png',
-                productName: 'Carrot',
-                productDetails: '1kg-Rs:29',
-                price: '29',
-                onTap: () {},
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://purepng.com/public/uploads/large/purepng.com-tomatovegetables-tomato-941524727884qqxpa.png',
-                productName: 'Tomato',
-                productDetails: '1kg-54',
-                price: '54',
-                onTap: () {},
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://freepngimg.com/thumb/ladyfinger/42370-2-lady-finger-png-free-photo.png',
-                productName: 'Ladies Finger',
-                productDetails: '1kg-Rs.32',
-                price: '32',
-                onTap: () {},
-              ),
-            ],*/
           ),
         ),
       ],
@@ -229,48 +163,6 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
                     price: FoodProduct2Data.productPrice);
               },
             ).toList(),
-            /*children: [
-              SingalGroceryProduct(
-                onTap: () {},
-                productImage:
-                    'https://proofmart.com/wp-content/uploads/2021/06/112.png',
-                productName: 'Curry Leaves',
-                productDetails: '50g/200g-Rs:15',
-                price: '15',
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'http://assets.stickpng.com/images/58bf1e87e443f41d77c734b6.png',
-                productName: 'Coriander Leaf ',
-                productDetails: '50g/200g-Rs:20',
-                price: '20',
-                onTap: () {},
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://pngimg.com/uploads/cauliflower/cauliflower_PNG12679.png',
-                productName: 'Cauliflower ',
-                productDetails: '600g/1000g-Rs:27',
-                price: '27',
-                onTap: () {},
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://www.seekpng.com/png/full/94-942323_cabbage-png-free-download-cabbage-png.png',
-                productName: 'Cabbage',
-                productDetails: '600g/1000g-Rs:17',
-                price: '17',
-                onTap: () {},
-              ),
-              SingalGroceryProduct(
-                productImage:
-                    'https://cdn.pixabay.com/photo/2020/01/06/06/13/anethum-4744673__340.png',
-                productName: 'Dill Leaves',
-                productDetails: '1pc-Rs:20',
-                price: '20',
-                onTap: () {},
-              ),
-            ],*/
           ),
         ),
       ],
