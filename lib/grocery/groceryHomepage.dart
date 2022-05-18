@@ -55,11 +55,13 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
             children: productProvider.getGroceryProductDataList.map(
               (GroceryProductData) {
                 return SingalGroceryProduct(
-                    onTap: () {},
-                    productImage: GroceryProductData.productImage,
-                    productName: GroceryProductData.productName,
-                    productDetails: GroceryProductData.productDetails,
-                    price: GroceryProductData.productPrice);
+                  onTap: () {},
+                  productImage: GroceryProductData.productImage,
+                  productName: GroceryProductData.productName,
+                  productDetails: GroceryProductData.productDetails,
+                  price: GroceryProductData.productPrice,
+                  productId: GroceryProductData.productId,
+                );
               },
             ).toList(),
           ),
@@ -105,11 +107,13 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
             children: productProvider.getGroceryProduct1DataList.map(
               (GroceryProduct1Data) {
                 return SingalGroceryProduct(
-                    onTap: () {},
-                    productImage: GroceryProduct1Data.productImage,
-                    productName: GroceryProduct1Data.productName,
-                    productDetails: GroceryProduct1Data.productDetails,
-                    price: GroceryProduct1Data.productPrice);
+                  onTap: () {},
+                  productImage: GroceryProduct1Data.productImage,
+                  productName: GroceryProduct1Data.productName,
+                  productDetails: GroceryProduct1Data.productDetails,
+                  price: GroceryProduct1Data.productPrice,
+                  productId: GroceryProduct1Data.productId,
+                );
               },
             ).toList(),
           ),
@@ -155,11 +159,13 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
             children: productProvider.getGroceryProduct2DataList.map(
               (GroceryProduct2Data) {
                 return SingalGroceryProduct(
-                    onTap: () {},
-                    productImage: GroceryProduct2Data.productImage,
-                    productName: GroceryProduct2Data.productName,
-                    productDetails: GroceryProduct2Data.productDetails,
-                    price: GroceryProduct2Data.productPrice);
+                  onTap: () {},
+                  productImage: GroceryProduct2Data.productImage,
+                  productName: GroceryProduct2Data.productName,
+                  productDetails: GroceryProduct2Data.productDetails,
+                  price: GroceryProduct2Data.productPrice,
+                  productId: GroceryProduct2Data.productId,
+                );
               },
             ).toList(),
           ),

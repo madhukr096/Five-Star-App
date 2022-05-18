@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:five_star/providers/auth_provider.dart';
 import 'package:five_star/providers/product_provider.dart';
+import 'package:five_star/providers/review_cart_provider.dart';
 import 'package:five_star/providers/user_provider.dart';
 import 'package:five_star/screens/Homepage.dart';
 import 'package:five_star/screens/welcome_screen.dart';
@@ -44,6 +45,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<UserProvider>(
           create: (context) => UserProvider(),
+        ),
+        ChangeNotifierProvider<ReviewCartProvider>(
+          create: (context) => ReviewCartProvider(),
         ),
       ],
       child: MaterialApp(

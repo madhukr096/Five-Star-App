@@ -1,4 +1,5 @@
 import 'package:five_star/config/color.dart';
+import 'package:five_star/widgets/count.dart';
 import 'package:flutter/material.dart';
 
 enum SinginCharacter { fill, outline }

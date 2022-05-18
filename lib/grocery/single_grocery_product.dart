@@ -8,12 +8,14 @@ class SingalGroceryProduct extends StatelessWidget {
   final String productDetails;
   final Function onTap;
   final int price;
+  final String productId;
   SingalGroceryProduct(
       {required this.productImage,
       required this.productName,
       required this.productDetails,
       required this.onTap,
-      required this.price});
+      required this.price,
+      required this.productId});
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +102,13 @@ class SingalGroceryProduct extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
-                            Count(),
+                            Count(
+                              productId: productId,
+                              productName: productName,
+                              productImage: productImage,
+                              productPrice: price,
+                              productQuality: '1',
+                            ),
                           ],
                         ),
                       ],
