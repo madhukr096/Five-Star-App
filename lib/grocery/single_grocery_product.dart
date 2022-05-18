@@ -1,4 +1,5 @@
 import 'package:five_star/screens/product_overview.dart';
+import 'package:five_star/widgets/count.dart';
 import 'package:flutter/material.dart';
 
 class SingalGroceryProduct extends StatelessWidget {
@@ -99,32 +100,7 @@ class SingalGroceryProduct extends StatelessWidget {
                             SizedBox(
                               width: 5,
                             ),
-                            Container(
-                              height: 25,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.grey,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.remove,
-                                      size: 15, color: Colors.black),
-                                  Text(
-                                    '1',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Icon(Icons.add,
-                                      size: 15, color: Colors.black),
-                                ],
-                              ),
-                            ),
+                            Count(),
                           ],
                         ),
                       ],
