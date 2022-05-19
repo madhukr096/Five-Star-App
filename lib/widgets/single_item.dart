@@ -5,13 +5,17 @@ class SingleItem extends StatelessWidget {
   bool isBool = false;
   String productImage;
   String productName;
-  String productDetails;
+  String productId;
+  int? productQuality;
   int productPrice;
+  final VoidCallback? onDelete;
   SingleItem({
+    this.onDelete,
     required this.isBool,
     required this.productImage,
     required this.productName,
-    required this.productDetails,
+    required this.productId,
+    this.productQuality,
     required this.productPrice,
   });
 
@@ -50,7 +54,7 @@ class SingleItem extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            productDetails,
+                            '',
                             style: TextStyle(
                               color: Colors.grey,
                             ),
@@ -127,10 +131,13 @@ class SingleItem extends StatelessWidget {
                         )
                       : Column(
                           children: [
-                            Icon(
-                              Icons.delete,
-                              size: 30,
-                              color: Colors.black54,
+                            InkWell(
+                              onTap: onDelete,
+                              child: Icon(
+                                Icons.delete,
+                                size: 30,
+                                color: Colors.black54,
+                              ),
                             ),
                             SizedBox(
                               height: 5,

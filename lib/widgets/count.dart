@@ -23,7 +23,6 @@ class _CountState extends State<Count> {
   bool isTrue = false;
   @override
   Widget build(BuildContext context) {
-    print(widget.productId);
     ReviewCartProvider reviewCartProvider = Provider.of(context);
     return Container(
       height: 25,

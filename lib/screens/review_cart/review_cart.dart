@@ -1,13 +1,52 @@
+import 'package:five_star/models/review_cart_model.dart';
+import 'package:five_star/providers/review_cart_provider.dart';
 import 'package:five_star/widgets/single_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../config/color.dart';
 
 class ReviewCart extends StatelessWidget {
-  const ReviewCart({Key? key}) : super(key: key);
+  late ReviewCartProvider reviewCartProvider;
+  showAlertDialog(BuildContext context, ReviewCartModel delete) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: Text("No"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text("Yes"),
+      onPressed: () {
+        reviewCartProvider.reviewCartDelete(delete.cartId);
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Cart Product"),
+      content: Text("Are you delete on product?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    reviewCartProvider = Provider.of(context);
+    reviewCartProvider.getReviewCartData();
     return Scaffold(
       bottomNavigationBar: ListTile(
         title: Text("Total Amount"),
@@ -42,44 +81,35 @@ class ReviewCart extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          /* SingleItem(
-            isBool: true,
-            productImage: '',
-            productName: '',
-            productDetails: '',
-            productPrice: '',
-          ),
-          SingleItem(
-            isBool: true,
-            productImage: '',
-            productName: '',
-            productDetails: '',
-            productPrice: '',
-          ),
-          SingleItem(
-            isBool: true,
-            productImage: '',
-            productName: '',
-            productDetails: '',
-            productPrice: '',
-          ),
-          SingleItem(
-            isBool: true,
-            productImage: '',
-            productName: '',
-            productDetails: '',
-            productPrice: '',
-          ),*/
-          SizedBox(
-            height: 10,
-          ),
-        ],
-      ),
+      body: reviewCartProvider.getReviewCartDataList.isEmpty
+          ? Center(
+              child: Text("NODATA"),
+            )
+          : ListView.builder(
+              itemCount: reviewCartProvider.getReviewCartDataList.length,
+              itemBuilder: (context, index) {
+                ReviewCartModel data =
+                    reviewCartProvider.getReviewCartDataList[index];
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SingleItem(
+                      isBool: true,
+                      productImage: data.cartImage,
+                      productName: data.cartName,
+                      productId: data.cartId,
+                      productQuality: data.cartQuantity,
+                      productPrice: data.cartPrice,
+                      onDelete: () {
+                        showAlertDialog(context, data);
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
     );
   }
 }

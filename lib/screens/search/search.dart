@@ -52,7 +52,8 @@ class _SearchState extends State<Search> {
                   title: Text("Price - Low to High"),
                   onChanged: (vav) {
                     setState(() {
-                      // _charcter = vav;
+                      _charcter:
+                      vav;
                     });
                     Navigator.of(context).pop();
                   },
@@ -63,7 +64,8 @@ class _SearchState extends State<Search> {
                   title: Text("Price - High to Low"),
                   onChanged: (vav) {
                     setState(() {
-                      // _charcter = vav;
+                      _charcter:
+                      vav;
                     });
                     Navigator.of(context).pop();
                   },
@@ -129,7 +131,7 @@ class _SearchState extends State<Search> {
                   isBool: false,
                   productImage: data.productImage,
                   productName: data.productName,
-                  productDetails: data.productDetails,
+                  productId: data.productId,
                   productPrice: data.productPrice);
             }).toList(),
           ),

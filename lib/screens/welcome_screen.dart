@@ -145,7 +145,7 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                FlatButton(
+               /* FlatButton(
                   color: Colors.deepOrangeAccent,
                   child: Text(
                     'Set Delivery Location',
@@ -160,7 +160,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     );
                   },
-                ),
+                ),*/
                 SizedBox(
                   height: 20,
                 ),
