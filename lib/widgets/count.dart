@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:five_star/providers/review_cart_provider.dart';
 import 'package:five_star/screens/review_cart/review_cart.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,16 @@ class Count extends StatefulWidget {
 class _CountState extends State<Count> {
   int count = 1;
   bool isTrue = false;
+
+  getAddQuantity() {
+    FirebaseFirestore.instance
+        .collection("ReviewCart")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("MyReviewCart")
+        .get()
+        .then((value) => {});
+  }
+
   @override
   Widget build(BuildContext context) {
     ReviewCartProvider reviewCartProvider = Provider.of(context);
@@ -89,6 +101,7 @@ class _CountState extends State<Count> {
                     cartName: widget.productName,
                     cartPrice: widget.productPrice,
                     cartQuantity: count,
+                    isAdd: true,
                   );
                 },
                 child: Text(

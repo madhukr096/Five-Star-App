@@ -11,6 +11,7 @@ class ReviewCartProvider with ChangeNotifier {
     required String cartId,
     required int cartPrice,
     required int cartQuantity,
+    required bool isAdd,
   }) async {
     await FirebaseFirestore.instance
         .collection("ReviewCart")
@@ -24,6 +25,7 @@ class ReviewCartProvider with ChangeNotifier {
         "cartImage": cartImage,
         "cartPrice": cartPrice,
         "cartQuantity": cartQuantity,
+        "isAdd": isAdd,
       },
     );
   }
