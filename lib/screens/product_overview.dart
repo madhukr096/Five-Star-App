@@ -1,6 +1,8 @@
 import 'package:five_star/config/color.dart';
+import 'package:five_star/providers/wish_list.dart';
 import 'package:five_star/widgets/count.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 enum SinginCharacter { fill, outline }
 
@@ -9,12 +11,15 @@ class ProductOverView extends StatefulWidget {
   final String product_Image;
   final String product_details;
   final String product_price;
-
+  String? productId;
+  int? productQuality;
   ProductOverView({
     required this.product_Image,
     required this.product_Name,
     required this.product_details,
     required this.product_price,
+    this.productId,
+    this.productQuality,
   });
   @override
   State<ProductOverView> createState() => _ProductOverViewState();
@@ -29,44 +34,65 @@ class _ProductOverViewState extends State<ProductOverView> {
     required Color color,
     required String title,
     required IconData iconData,
+    final VoidCallback? onTap,
   }) {
     return Expanded(
-      child: Container(
-        padding: EdgeInsets.all(20),
-        color: backgroundColor,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              iconData,
-              size: 17,
-              color: iconColor,
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Text(
-              title,
-              style: TextStyle(color: color),
-            ),
-          ],
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          color: backgroundColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                iconData,
+                size: 20,
+                color: iconColor,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                title,
+                style: TextStyle(color: color),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
+  bool wishListBool = false;
   @override
   Widget build(BuildContext context) {
+    WishListProvider wishListProvider = Provider.of(context);
     return Scaffold(
       bottomNavigationBar: Row(
         children: [
           bonntonNavigatorBar(
-            backgroundColor: textColor,
-            color: Colors.white70,
-            iconColor: Colors.grey,
-            title: "Add to WhishList",
-            iconData: Icons.favorite_outline,
-          ),
+              backgroundColor: textColor,
+              color: Colors.white70,
+              iconColor: Colors.grey,
+              title: "Add to WhishList",
+              iconData: wishListBool == false
+                  ? Icons.favorite_outline
+                  : Icons.favorite,
+              onTap: () {
+                setState(() {
+                  wishListBool = !wishListBool;
+                });
+                if (wishListBool == true) {
+                  wishListProvider.addWishListData(
+                    wishListId: widget.productId!,
+                    wishListImage: widget.product_Image,
+                    wishListName: widget.product_Name,
+                    wishListPrice: 1,
+                    wishListQuantity: widget.productQuality!,
+                  );
+                }
+              }),
           bonntonNavigatorBar(
               backgroundColor: primaryColor,
               color: textColor,
@@ -130,7 +156,8 @@ class _ProductOverViewState extends State<ProductOverView> {
                               activeColor: Colors.green[700],
                               onChanged: (value) {
                                 setState(() {
-                                  //  _character = value;
+                                  _character:
+                                  value;
                                 });
                               },
                             ),

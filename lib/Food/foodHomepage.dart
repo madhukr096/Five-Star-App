@@ -61,6 +61,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
                   productName: FoodProductData.productName,
                   productDetails: FoodProductData.productDetails,
                   price: FoodProductData.productPrice,
+                  //productQuantity: FoodProductData.productQuantity,
                 );
               },
             ).toList(),
@@ -113,6 +114,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
                   productDetails: FoodProduct1Data.productDetails,
                   price: FoodProduct1Data.productPrice,
                   productId: FoodProduct1Data.productId,
+                  //productQuantity: FoodProduct1Data.productQuantity,
                 );
               },
             ).toList(),
@@ -165,6 +167,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
                   productDetails: FoodProduct2Data.productDetails,
                   price: FoodProduct2Data.productPrice,
                   productId: FoodProduct2Data.productId,
+                  //productQuantity: FoodProduct2Data.productQuantity,
                 );
               },
             ).toList(),

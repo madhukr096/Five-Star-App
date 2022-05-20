@@ -29,12 +29,25 @@ class _CountState extends State<Count> {
         .collection("ReviewCart")
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .collection("MyReviewCart")
+        .doc(widget.productId)
         .get()
-        .then((value) => {});
+        .then((value) => {
+              if (this.mounted)
+                {
+                  if (value.exists)
+                    {
+                      setState(() {
+                        count = value.get("cartQuantity");
+                        isTrue = value.get("isAdd");
+                      })
+                    }
+                }
+            });
   }
 
   @override
   Widget build(BuildContext context) {
+    getAddQuantity();
     ReviewCartProvider reviewCartProvider = Provider.of(context);
     return Container(
       height: 25,
@@ -51,15 +64,22 @@ class _CountState extends State<Count> {
               children: [
                 InkWell(
                   onTap: () {
-                    if (count > 1) {
+                    if (count == 1) {
+                      setState(() {
+                        isTrue = false;
+                      });
+                      reviewCartProvider.reviewCartDelete(widget.productId);
+                    } else if (count > 1) {
                       setState(() {
                         count--;
                       });
-                      if (count == 1) {
-                        setState(() {
-                          isTrue = false;
-                        });
-                      }
+                      reviewCartProvider.updateReviewCartData(
+                        cartId: widget.productId,
+                        cartImage: widget.productImage,
+                        cartName: widget.productName,
+                        cartPrice: widget.productPrice,
+                        cartQuantity: count,
+                      );
                     }
                   },
                   child: Icon(
@@ -80,6 +100,13 @@ class _CountState extends State<Count> {
                     setState(() {
                       count++;
                     });
+                    reviewCartProvider.updateReviewCartData(
+                      cartId: widget.productId,
+                      cartImage: widget.productImage,
+                      cartName: widget.productName,
+                      cartPrice: widget.productPrice,
+                      cartQuantity: count,
+                    );
                   },
                   child: Icon(
                     Icons.add,
@@ -101,7 +128,6 @@ class _CountState extends State<Count> {
                     cartName: widget.productName,
                     cartPrice: widget.productPrice,
                     cartQuantity: count,
-                    isAdd: true,
                   );
                 },
                 child: Text(

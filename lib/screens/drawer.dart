@@ -57,9 +57,9 @@ class DrawerSide extends StatelessWidget {
                       SizedBox(
                         height: 7,
                       ),
-                      Container(
+                      /*Container(
                         height: 30,
-                        child: OutlineButton(
+                        child: OutlinedButton(
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -74,7 +74,7 @@ class DrawerSide extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
                 ],
@@ -137,6 +137,16 @@ class DrawerSide extends StatelessWidget {
             listTile(icon: Icons.star_outline, title: "Ratings & Reviews"),
             listTile(
                 icon: Icons.privacy_tip_outlined, title: "Privacy & Security"),
+            listTile(
+                icon: Icons.logout_outlined,
+                title: "SignOut",
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => WelcomeScreen(),
+                    ),
+                  );
+                }),
             Container(
               height: 350,
               padding: EdgeInsets.symmetric(horizontal: 20),

@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,11 +35,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   dots_indicator: ^2.1.0
-  firebase_core: ^1.15.0
-  firebase_auth: ^3.3.15
+  firebase_core: ^1.17.0
+  firebase_auth: ^3.3.18
   cloud_firestore: ^3.1.15
   provider: ^6.0.2
-  pinput: ^2.2.7
+  pinput: ^2.2.9
   pin_code_fields: ^7.4.0
   google_sign_in: ^5.3.1
   flutter_signin_button: ^2.0.0

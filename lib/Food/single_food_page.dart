@@ -9,13 +9,16 @@ class SingalFoodProduct extends StatelessWidget {
   final Function onTap;
   final int price;
   final String productId;
-  SingalFoodProduct(
-      {required this.productImage,
-      required this.productName,
-      required this.productDetails,
-      required this.onTap,
-      required this.price,
-      required this.productId});
+  //final String productQuality;
+  SingalFoodProduct({
+    required this.productImage,
+    required this.productName,
+    required this.productDetails,
+    required this.onTap,
+    required this.price,
+    required this.productId,
+    // required this.productQuality,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -88,13 +91,13 @@ class SingalFoodProduct extends StatelessWidget {
                                         fontSize: 11,
                                       ),
                                     )),
-                                    Center(
+                                    /* Center(
                                       child: Icon(
                                         Icons.arrow_drop_down,
                                         size: 20,
                                         color: Colors.black,
                                       ),
-                                    ),
+                                    ),*/
                                   ],
                                 ),
                               ),

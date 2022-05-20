@@ -7,10 +7,12 @@ class SingleItem extends StatelessWidget {
   String productName;
   String productId;
   int? productQuality;
+  String? productDetails;
   int productPrice;
   final VoidCallback? onDelete;
   SingleItem({
     this.onDelete,
+    this.productDetails,
     required this.isBool,
     required this.productImage,
     required this.productName,
@@ -54,7 +56,7 @@ class SingleItem extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '',
+                            '\RS : $productPrice',
                             style: TextStyle(
                               color: Colors.grey,
                             ),
@@ -81,13 +83,13 @@ class SingleItem extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  Center(
+                                  /* Center(
                                     child: Icon(
                                       Icons.arrow_drop_down,
                                       size: 20,
                                       color: Colors.black,
                                     ),
-                                  )
+                                  )*/
                                 ],
                               ),
                             )
@@ -115,7 +117,7 @@ class SingleItem extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.add,
+                                  Icons.remove,
                                   color: Colors.black,
                                   size: 20,
                                 ),
@@ -125,50 +127,63 @@ class SingleItem extends StatelessWidget {
                                     color: Colors.black,
                                   ),
                                 ),
+                                Icon(
+                                  Icons.add,
+                                  color: Colors.black,
+                                  size: 20,
+                                ),
                               ],
                             ),
                           ),
                         )
-                      : Column(
-                          children: [
-                            InkWell(
-                              onTap: onDelete,
-                              child: Icon(
-                                Icons.delete,
-                                size: 30,
-                                color: Colors.black54,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Container(
-                              height: 25,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      Icons.add,
-                                      color: Colors.black,
-                                      size: 20,
-                                    ),
-                                    Text(
-                                      "ADD",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ],
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Column(
+                            children: [
+                              InkWell(
+                                onTap: onDelete,
+                                child: Icon(
+                                  Icons.delete,
+                                  size: 30,
+                                  color: Colors.black54,
                                 ),
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Container(
+                                height: 25,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.remove,
+                                        color: Colors.black,
+                                        size: 20,
+                                      ),
+                                      Text(
+                                        "$productQuality",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.add,
+                                        color: Colors.black,
+                                        size: 20,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                 ),
               ),

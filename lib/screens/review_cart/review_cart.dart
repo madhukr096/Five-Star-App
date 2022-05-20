@@ -74,7 +74,7 @@ class ReviewCart extends StatelessWidget {
         backgroundColor: primaryColor,
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
-          "Review Cart",
+          "Cart",
           style: TextStyle(
             color: textColor,
             fontSize: 18,

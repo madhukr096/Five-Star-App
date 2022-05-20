@@ -61,6 +61,7 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
                   productName: GroceryProductData.productName,
                   productDetails: GroceryProductData.productDetails,
                   price: GroceryProductData.productPrice,
+                  //  productQuantity: GroceryProductData.productQuantity,
                 );
               },
             ).toList(),
@@ -113,6 +114,7 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
                   productDetails: GroceryProduct1Data.productDetails,
                   price: GroceryProduct1Data.productPrice,
                   productId: GroceryProduct1Data.productId,
+                  // productQuantity: GroceryProduct1Data.productQuantity,
                 );
               },
             ).toList(),
@@ -165,6 +167,7 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
                   productDetails: GroceryProduct2Data.productDetails,
                   price: GroceryProduct2Data.productPrice,
                   productId: GroceryProduct2Data.productId,
+                  //productQuantity: GroceryProduct2Data.productQuantity,
                 );
               },
             ).toList(),
