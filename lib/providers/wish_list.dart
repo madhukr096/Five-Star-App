@@ -11,9 +11,9 @@ class WishListProvider with ChangeNotifier {
     required int wishListQuantity,
   }) async {
     await FirebaseFirestore.instance
-        .collection("ReviewCart")
+        .collection("WishList")
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .collection("MyReviewCart")
+        .collection("MyWishList")
         .doc(wishListId)
         .set(
       {
