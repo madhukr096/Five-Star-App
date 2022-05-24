@@ -9,7 +9,7 @@ class Count1 extends StatefulWidget {
   late String productImage;
   late String productName;
   late String productId;
-  late String productPrice;
+  late int productPrice;
   Count1({
     required this.productName,
     required this.productId,
@@ -77,7 +77,7 @@ class _Count1State extends State<Count1> {
                         cartId: widget.productId,
                         cartImage: widget.productImage,
                         cartName: widget.productName,
-                        cartPrice: widget.productPrice,
+                        cartPrice: '',
                         cartQuantity: count,
                       );
                     }
@@ -104,7 +104,7 @@ class _Count1State extends State<Count1> {
                       cartId: widget.productId,
                       cartImage: widget.productImage,
                       cartName: widget.productName,
-                      cartPrice: widget.productPrice,
+                      cartPrice: '',
                       cartQuantity: count,
                     );
                   },
@@ -126,7 +126,7 @@ class _Count1State extends State<Count1> {
                     cartId: widget.productId,
                     cartImage: widget.productImage,
                     cartName: widget.productName,
-                    cartPrice: 1,
+                    cartPrice: '',
                     cartQuantity: count,
                   );
                 },

@@ -4,7 +4,7 @@ class ReviewCartModel {
   late String cartImage;
   late String cartName;
   late String cartId;
-  late int cartPrice;
+  late String cartPrice;
   late int cartQuantity;
   ReviewCartModel({
     required this.cartImage,

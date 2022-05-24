@@ -7,7 +7,7 @@ class SingalGroceryProduct extends StatelessWidget {
   final String productName;
   final String productDetails;
   final Function onTap;
-  final int price;
+  final String price;
   final String productId;
   //final String productQuantity;
   SingalGroceryProduct({

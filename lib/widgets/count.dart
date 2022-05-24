@@ -9,7 +9,7 @@ class Count extends StatefulWidget {
   late String productImage;
   late String productName;
   late String productId;
-  late int productPrice;
+  late String productPrice;
   Count({
     required this.productName,
     required this.productId,

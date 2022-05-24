@@ -4,7 +4,7 @@ class ProductModel {
   late String productImage;
   late String productName;
   String productDetails = '';
-  late int productPrice;
+  late String productPrice;
   late String productId;
   int? productQuantity;
   ProductModel({

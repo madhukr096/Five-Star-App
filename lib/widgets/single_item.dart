@@ -1,15 +1,18 @@
 import 'package:five_star/config/color.dart';
+import 'package:five_star/providers/review_cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:five_star/widgets/count.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
-class SingleItem extends StatelessWidget {
+class SingleItem extends StatefulWidget {
   bool isBool = false;
   String productImage;
   String productName;
   String productId;
   int? productQuatity;
   String? productDetails;
-  int productPrice;
+  String productPrice;
   final VoidCallback? onDelete;
   SingleItem({
     this.onDelete,
@@ -23,7 +26,29 @@ class SingleItem extends StatelessWidget {
   });
 
   @override
+  State<SingleItem> createState() => _SingleItemState();
+}
+
+class _SingleItemState extends State<SingleItem> {
+  late int count;
+  getCount() {
+    setState(() {
+      count = widget.productQuatity!;
+    });
+  }
+
+  late ReviewCartProvider reviewCartProvider;
+  /*@override
+  void initState() {
+    getCount();
+    super.initState();
+  }*/
+
+  @override
   Widget build(BuildContext context) {
+    getCount();
+    reviewCartProvider = Provider.of<ReviewCartProvider>(context);
+    reviewCartProvider.getReviewCartData();
     return Column(
       children: [
         Padding(
@@ -34,7 +59,7 @@ class SingleItem extends StatelessWidget {
                 child: Container(
                   height: 100,
                   child: Center(
-                    child: Image.network(productImage),
+                    child: Image.network(widget.productImage),
                   ),
                 ),
               ),
@@ -42,7 +67,7 @@ class SingleItem extends StatelessWidget {
                 child: Container(
                   height: 100,
                   child: Column(
-                    mainAxisAlignment: isBool == false
+                    mainAxisAlignment: widget.isBool == false
                         ? MainAxisAlignment.spaceAround
                         : MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,21 +75,21 @@ class SingleItem extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            productName,
+                            widget.productName,
                             style: TextStyle(
                               color: textColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            '\RS : $productPrice',
+                            '\RS : ${widget.productPrice}',
                             style: TextStyle(
                               color: Colors.grey,
                             ),
                           ),
                         ],
                       ),
-                      isBool == false
+                      widget.isBool == false
                           ? Container(
                               margin: EdgeInsets.only(right: 15),
                               padding: EdgeInsets.symmetric(horizontal: 10),
@@ -77,7 +102,7 @@ class SingleItem extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: Text(
-                                      '$productPrice',
+                                      '${widget.productPrice}',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 14,
@@ -94,7 +119,7 @@ class SingleItem extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : Text('$productPrice'),
+                          : Text('${widget.productPrice}'),
                     ],
                   ),
                 ),
@@ -102,15 +127,15 @@ class SingleItem extends StatelessWidget {
               Expanded(
                 child: Container(
                   height: 100,
-                  padding: isBool == false
+                  padding: widget.isBool == false
                       ? EdgeInsets.symmetric(horizontal: 15, vertical: 32)
                       : EdgeInsets.only(left: 15, right: 15),
-                  child: isBool == false
+                  child: widget.isBool == false
                       ? Count(
-                          productName: productName,
-                          productId: productId,
-                          productImage: productImage,
-                          productPrice: productPrice)
+                          productName: widget.productName,
+                          productId: widget.productId,
+                          productImage: widget.productImage,
+                          productPrice: widget.productPrice)
                       /* Container(
                           height: 25,
                           width: 50,
@@ -147,7 +172,7 @@ class SingleItem extends StatelessWidget {
                           child: Column(
                             children: [
                               InkWell(
-                                onTap: onDelete,
+                                onTap: widget.onDelete,
                                 child: Icon(
                                   Icons.delete,
                                   size: 30,
@@ -168,21 +193,63 @@ class SingleItem extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(
-                                        Icons.remove,
-                                        color: Colors.black,
-                                        size: 20,
+                                      InkWell(
+                                        onTap: () {
+                                          if (count == 1) {
+                                            Fluttertoast.showToast(
+                                                msg: "You reach minimum limit");
+                                          } else {
+                                            setState(() {
+                                              count--;
+                                            });
+                                            reviewCartProvider
+                                                .updateReviewCartData(
+                                                    cartImage:
+                                                        widget.productImage,
+                                                    cartName:
+                                                        widget.productName,
+                                                    cartId: widget.productId,
+                                                    cartPrice:
+                                                        widget.productPrice,
+                                                    cartQuantity: count);
+                                          }
+                                        },
+                                        child: Icon(
+                                          Icons.remove,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
                                       ),
                                       Text(
-                                        "$productQuatity",
+                                        '$count',
+                                        //"${widget.productQuatity}",
                                         style: TextStyle(
                                           color: Colors.black,
                                         ),
                                       ),
-                                      Icon(
-                                        Icons.add,
-                                        color: Colors.black,
-                                        size: 20,
+                                      InkWell(
+                                        onTap: () {
+                                          if (count < 10) {
+                                            setState(() {
+                                              count++;
+                                            });
+                                            reviewCartProvider
+                                                .updateReviewCartData(
+                                                    cartImage:
+                                                        widget.productImage,
+                                                    cartName:
+                                                        widget.productName,
+                                                    cartId: widget.productId,
+                                                    cartPrice:
+                                                        widget.productPrice,
+                                                    cartQuantity: count);
+                                          }
+                                        },
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -196,7 +263,7 @@ class SingleItem extends StatelessWidget {
             ],
           ),
         ),
-        isBool == false
+        widget.isBool == false
             ? Container()
             : Divider(
                 height: 1,

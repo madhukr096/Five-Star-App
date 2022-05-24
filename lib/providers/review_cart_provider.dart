@@ -9,7 +9,7 @@ class ReviewCartProvider with ChangeNotifier {
     required String cartImage,
     required String cartName,
     required String cartId,
-    required int cartPrice,
+    required String cartPrice,
     required int cartQuantity,
   }) async {
     await FirebaseFirestore.instance
@@ -33,7 +33,7 @@ class ReviewCartProvider with ChangeNotifier {
     required String cartImage,
     required String cartName,
     required String cartId,
-    required int cartPrice,
+    required String cartPrice,
     required int cartQuantity,
   }) async {
     await FirebaseFirestore.instance

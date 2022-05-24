@@ -4,6 +4,7 @@ import 'package:five_star/config/color.dart';
 import 'package:five_star/providers/wish_list.dart';
 import 'package:five_star/screens/review_cart/review_cart.dart';
 import 'package:five_star/widgets/count.dart';
+import 'package:five_star/widgets/count1.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -87,7 +88,7 @@ class _ProductOverViewState extends State<ProductOverView> {
 
   @override
   Widget build(BuildContext context) {
-    getWishListBool();
+    //getWishListBool();
     WishListProvider wishListProvider = Provider.of(context);
     return Scaffold(
       bottomNavigationBar: Row(
@@ -194,7 +195,7 @@ class _ProductOverViewState extends State<ProductOverView> {
                             productName: widget.product_Name,
                             productId: widget.productId,
                             productImage: widget.product_Image,
-                            productPrice: 1),
+                            productPrice: widget.product_price),
                         /* Container(
                           padding: EdgeInsets.symmetric(
                             horizontal: 30,
