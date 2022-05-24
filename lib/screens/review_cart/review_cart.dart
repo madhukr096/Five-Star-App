@@ -49,7 +49,7 @@ class ReviewCart extends StatelessWidget {
       bottomNavigationBar: ListTile(
         title: Text("Total Amount"),
         subtitle: Text(
-          "RS 200.00",
+          "\Rs : ${reviewCartProvider.getTotalPrice()}",
           style: TextStyle(
             color: Colors.green[900],
           ),
@@ -57,7 +57,7 @@ class ReviewCart extends StatelessWidget {
         trailing: Container(
           width: 160,
           child: MaterialButton(
-            child: Text("Submit"),
+            child: Text("Order"),
             color: primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
