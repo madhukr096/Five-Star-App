@@ -2,9 +2,11 @@ import 'package:five_star/models/review_cart_model.dart';
 import 'package:five_star/providers/review_cart_provider.dart';
 import 'package:five_star/widgets/single_item.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../config/color.dart';
+import '../check_out/delivery_details/delivery_details.dart';
 
 class ReviewCart extends StatelessWidget {
   late ReviewCartProvider reviewCartProvider;
@@ -64,7 +66,13 @@ class ReviewCart extends StatelessWidget {
                 30,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              if (reviewCartProvider.getReviewCartDataList.isEmpty) {
+                Fluttertoast.showToast(msg: 'No Cart Data Found');
+              }
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => DeliveryDetails()));
+            },
           ),
         ),
       ),

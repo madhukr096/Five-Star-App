@@ -52,8 +52,9 @@ class _DrawerSideState extends State<DrawerSide> {
                       radius: 43,
                       child: CircleAvatar(
                         backgroundColor: Colors.yellow,
-                        backgroundImage: NetworkImage(userData.userImage ??
-                            "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Image.png"),
+                        backgroundImage: NetworkImage(userData.userImage
+                            // ??    "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Image.png"
+                            ),
                         radius: 40,
                       ),
                     ),
