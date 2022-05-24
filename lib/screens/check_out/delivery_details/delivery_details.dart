@@ -1,10 +1,20 @@
 import 'package:five_star/screens/check_out/add_delivery_address/add_delivery_address.dart';
 import 'package:five_star/screens/check_out/delivery_details/single_delivery_item.dart';
+import 'package:five_star/screens/check_out/payment_summary/payment_summary.dart';
 import 'package:flutter/material.dart';
 
 import '../../../config/color.dart';
 
 class DeliveryDetails extends StatelessWidget {
+  List<Widget> address = [
+    SingleDeliveryItem(
+      title: 'FIVE STAR',
+      address: 'LVP Boys Hostel, Dairy Circle, Hassan  Pincode -573201',
+      number: '7259741181',
+      addressType: 'Home',
+    ),
+  ];
+  bool isAddress = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +39,15 @@ class DeliveryDetails extends StatelessWidget {
           height: 40,
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           child: MaterialButton(
-            child: Text("Add new Address"),
+            child: address.isEmpty
+                ? Text("Add new Address")
+                : Text("Payment Summary"),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => AddDeliveryAddress()));
+              address == null
+                  ? Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => AddDeliveryAddress()))
+                  : Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PaymentSummary()));
             },
             color: primaryColor,
             shape: RoundedRectangleBorder(
@@ -56,13 +71,15 @@ class DeliveryDetails extends StatelessWidget {
             ),
             Column(
               children: [
-                SingleDeliveryItem(
-                  title: 'MADHU K R',
-                  address:
-                      'LVP Boys Hostel, Dairy Circle, Hassan  Pincode -573201',
-                  number: '7259741181',
-                  addressType: 'Home',
-                ),
+                address.isEmpty
+                    ? Container()
+                    : SingleDeliveryItem(
+                        title: 'MADHU K R',
+                        address:
+                            'LVP Boys Hostel, Dairy Circle, Hassan  Pincode -573201',
+                        number: '7259741181',
+                        addressType: 'Home',
+                      ),
               ],
             )
           ],

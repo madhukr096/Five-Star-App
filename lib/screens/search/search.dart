@@ -15,7 +15,7 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   String query = "";
 
-  SinginCharcter _charcter = SinginCharcter.alphabeticaly;
+  var _charcter = SinginCharcter.alphabeticaly;
   List<ProductModel> searchItem(String query) {
     List<ProductModel> searchFood = widget.search.where((element) {
       return element.productName.toLowerCase().contains(query);
@@ -52,8 +52,7 @@ class _SearchState extends State<Search> {
                   title: Text("Price - Low to High"),
                   onChanged: (vav) {
                     setState(() {
-                      _charcter:
-                      vav;
+                      _charcter = SinginCharcter.lowToHigh;
                     });
                     Navigator.of(context).pop();
                   },
@@ -64,8 +63,18 @@ class _SearchState extends State<Search> {
                   title: Text("Price - High to Low"),
                   onChanged: (vav) {
                     setState(() {
-                      _charcter:
-                      vav;
+                      _charcter = SinginCharcter.highToLow;
+                    });
+                    Navigator.of(context).pop();
+                  },
+                ),
+                RadioListTile(
+                  value: SinginCharcter,
+                  groupValue: _charcter,
+                  title: Text("Alphabeticaly"),
+                  onChanged: (vav) {
+                    setState(() {
+                      _charcter = SinginCharcter.alphabeticaly;
                     });
                     Navigator.of(context).pop();
                   },

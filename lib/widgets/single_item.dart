@@ -31,11 +31,11 @@ class SingleItem extends StatefulWidget {
 
 class _SingleItemState extends State<SingleItem> {
   late int count;
-  getCount() {
+  /* getCount() {
     setState(() {
-      count = widget.productQuatity!;
+      count = widget.productQuatity;
     });
-  }
+  }*/
 
   late ReviewCartProvider reviewCartProvider;
   /*@override
@@ -46,7 +46,7 @@ class _SingleItemState extends State<SingleItem> {
 
   @override
   Widget build(BuildContext context) {
-    getCount();
+    //getCount();
     reviewCartProvider = Provider.of<ReviewCartProvider>(context);
     reviewCartProvider.getReviewCartData();
     return Column(
@@ -200,7 +200,7 @@ class _SingleItemState extends State<SingleItem> {
                                                 msg: "You reach minimum limit");
                                           } else {
                                             setState(() {
-                                              count--;
+                                              widget.productQuatity = -1;
                                             });
                                             reviewCartProvider
                                                 .updateReviewCartData(
@@ -211,7 +211,8 @@ class _SingleItemState extends State<SingleItem> {
                                                     cartId: widget.productId,
                                                     cartPrice:
                                                         widget.productPrice,
-                                                    cartQuantity: count);
+                                                    cartQuantity:
+                                                        widget.productQuatity!);
                                           }
                                         },
                                         child: Icon(
@@ -221,17 +222,18 @@ class _SingleItemState extends State<SingleItem> {
                                         ),
                                       ),
                                       Text(
-                                        '$count',
-                                        //"${widget.productQuatity}",
+                                        // '$count',
+                                        "${widget.productQuatity}",
                                         style: TextStyle(
                                           color: Colors.black,
                                         ),
                                       ),
                                       InkWell(
                                         onTap: () {
-                                          if (count < 10) {
+                                          /* if (count < 10) {
                                             setState(() {
-                                              count++;
+                                              widget.productQuatity+=1;
+                                              //count++;
                                             });
                                             reviewCartProvider
                                                 .updateReviewCartData(
@@ -243,7 +245,7 @@ class _SingleItemState extends State<SingleItem> {
                                                     cartPrice:
                                                         widget.productPrice,
                                                     cartQuantity: count);
-                                          }
+                                          }*/
                                         },
                                         child: Icon(
                                           Icons.add,
