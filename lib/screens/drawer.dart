@@ -1,15 +1,25 @@
 import 'package:five_star/grocery/groceryHomepage.dart';
+import 'package:five_star/models/user_model.dart';
+import 'package:five_star/providers/user_provider.dart';
 import 'package:five_star/screens/Homepage.dart';
 import 'package:five_star/screens/myprofile/my_profile.dart';
 import 'package:five_star/screens/review_cart/review_cart.dart';
 import 'package:five_star/screens/welcome_screen.dart';
+import 'package:five_star/screens/wishList/wish_list.dart';
 import 'package:flutter/material.dart';
 
 import '../Food/foodHomePage.dart';
 
-class DrawerSide extends StatelessWidget {
-  const DrawerSide({Key? key}) : super(key: key);
+class DrawerSide extends StatefulWidget {
+  late UserProvider userProvider;
 
+  DrawerSide(this.userProvider);
+
+  @override
+  State<DrawerSide> createState() => _DrawerSideState();
+}
+
+class _DrawerSideState extends State<DrawerSide> {
   Widget listTile({icon, title, onTap}) {
     return ListTile(
       onTap: onTap,
@@ -26,58 +36,61 @@ class DrawerSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var userData = widget.userProvider.currentUserData;
     return Drawer(
       child: Container(
         color: Color(0xffd1ad17),
         child: ListView(
           children: [
             DrawerHeader(
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.white54,
-                    radius: 43,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.yellow,
-                      backgroundImage: NetworkImage(
-                          "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Image.png"),
-                      radius: 40,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.white54,
+                      radius: 43,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.yellow,
+                        backgroundImage: NetworkImage(userData.userImage ??
+                            "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Image.png"),
+                        radius: 40,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Hello! User',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 7,
-                      ),
-                      /*Container(
-                        height: 30,
-                        child: OutlinedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => WelcomeScreen()),
-                            );
-                          },
-                          child: Text('Sign Out'),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            side: BorderSide(
-                              width: 2,
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(userData.userName),
+                        Text(
+                          userData.userEmail,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                    /*Container(
+                          height: 30,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => WelcomeScreen()),
+                              );
+                            },
+                            child: Text('Sign Out'),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              side: BorderSide(
+                                width: 2,
+                              ),
                             ),
                           ),
-                        ),
-                      ),*/
-                    ],
-                  ),
-                ],
+                        ),*/
+                  ],
+                ),
               ),
             ),
             listTile(
@@ -96,11 +109,20 @@ class DrawerSide extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => MyProfile(),
+                      builder: (context) => MyProfile(userData: userData),
                     ),
                   );
                 }),
-            listTile(icon: Icons.favorite_outline, title: "Wishlist"),
+            listTile(
+                icon: Icons.favorite_outline,
+                title: "Wishlist",
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => WishList(),
+                    ),
+                  );
+                }),
             listTile(icon: Icons.shop, title: "My Order"),
             listTile(
                 icon: Icons.add_shopping_cart,
