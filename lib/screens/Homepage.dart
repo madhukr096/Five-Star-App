@@ -1,5 +1,6 @@
 import 'package:five_star/Food/foodHomePage.dart';
 import 'package:five_star/config/color.dart';
+import 'package:five_star/providers/user_provider.dart';
 import 'package:five_star/screens/drawer.dart';
 import 'package:five_star/Food/food_singal_page.dart';
 import 'package:five_star/screens/product_overview.dart';
@@ -7,6 +8,7 @@ import 'package:five_star/grocery/grocery_singal_page.dart';
 import 'package:five_star/screens/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:five_star/screens/singal_product.dart';
+import 'package:provider/provider.dart';
 import '../grocery/groceryHomepage.dart';
 import '../providers/product_provider.dart';
 
@@ -18,6 +20,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late ProductProvider productProvider;
+  late UserProvider userProvider;
   Widget _buildHomePage(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,9 +72,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    productProvider = Provider.of(context);
+    UserProvider userProvider = Provider.of(context);
+    userProvider.getUserData();
     return Scaffold(
       backgroundColor: Color(0xffccbcbcb),
-      drawer: DrawerSide(),
+      drawer: DrawerSide(userProvider),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         title: Text('Home',
@@ -78,40 +85,6 @@ class _HomePageState extends State<HomePage> {
               color: Colors.black,
               fontSize: 17,
             )),
-        actions: [
-          /*CircleAvatar(
-            radius: 15,
-            backgroundColor: Color(0xffd4d181),
-            child:
-                IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Search(
-                      search: [],
-                    ),
-                  ),
-                );
-              },
-                Icon(
-              Icons.search,
-              size: 17,
-              color: Colors.black,
-            ),
-          ),*/
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: CircleAvatar(
-              radius: 12,
-              backgroundColor: Color(0xffd4d181),
-              child: Icon(
-                Icons.add_shopping_cart,
-                size: 17,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ],
         backgroundColor: Color(0xffd6b738),
       ),
       body: Padding(

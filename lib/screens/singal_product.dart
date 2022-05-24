@@ -39,6 +39,8 @@ class SingalProduct extends StatelessWidget {
                               product_Name: '',
                               product_details: '',
                               product_price: '',
+                              productQuality: 1,
+                              productId: '',
                             )));
                   },
                   child: Container(

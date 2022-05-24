@@ -23,7 +23,6 @@ class ReviewCart extends StatelessWidget {
         Navigator.of(context).pop();
       },
     );
-
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Cart Product"),
@@ -33,7 +32,6 @@ class ReviewCart extends StatelessWidget {
         continueButton,
       ],
     );
-
     // show the dialog
     showDialog(
       context: context,
@@ -100,7 +98,7 @@ class ReviewCart extends StatelessWidget {
                       productImage: data.cartImage,
                       productName: data.cartName,
                       productId: data.cartId,
-                      productQuality: data.cartQuantity,
+                      productQuatity: data.cartQuantity,
                       productPrice: data.cartPrice,
                       onDelete: () {
                         showAlertDialog(context, data);

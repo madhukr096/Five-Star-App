@@ -1,6 +1,7 @@
 import 'package:five_star/grocery/single_grocery_product.dart';
 import 'package:five_star/screens/drawer.dart';
 import 'package:five_star/screens/product_overview.dart';
+import 'package:five_star/screens/review_cart/review_cart.dart';
 import 'package:five_star/screens/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:five_star/screens/singal_product.dart';
@@ -200,7 +201,7 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
             )),
         actions: [
           CircleAvatar(
-            radius: 12,
+            radius: 15,
             backgroundColor: Color(0xffd4d181),
             child: IconButton(
               onPressed: () {
@@ -222,12 +223,19 @@ class _GroceryHomeScreenState extends State<GroceryHomeScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: CircleAvatar(
-              radius: 12,
+              radius: 15,
               backgroundColor: Color(0xffd4d181),
-              child: Icon(
-                Icons.add_shopping_cart,
-                size: 17,
-                color: Colors.black,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ReviewCart()),
+                  );
+                },
+                icon: Icon(
+                  Icons.shopping_cart,
+                  size: 17,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

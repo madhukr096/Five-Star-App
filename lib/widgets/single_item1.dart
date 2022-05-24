@@ -1,17 +1,16 @@
 import 'package:five_star/config/color.dart';
 import 'package:flutter/material.dart';
-import 'package:five_star/widgets/count.dart';
 
-class SingleItem extends StatelessWidget {
+class SingleItem1 extends StatelessWidget {
   bool isBool = false;
   String productImage;
   String productName;
   String productId;
   int? productQuatity;
-  String? productDetails;
-  int productPrice;
+  int? productDetails;
+  String? productPrice;
   final VoidCallback? onDelete;
-  SingleItem({
+  SingleItem1({
     this.onDelete,
     this.productDetails,
     required this.isBool,
@@ -19,7 +18,7 @@ class SingleItem extends StatelessWidget {
     required this.productName,
     required this.productId,
     this.productQuatity,
-    required this.productPrice,
+    this.productPrice,
   });
 
   @override
@@ -106,12 +105,7 @@ class SingleItem extends StatelessWidget {
                       ? EdgeInsets.symmetric(horizontal: 15, vertical: 32)
                       : EdgeInsets.only(left: 15, right: 15),
                   child: isBool == false
-                      ? Count(
-                          productName: productName,
-                          productId: productId,
-                          productImage: productImage,
-                          productPrice: productPrice)
-                      /* Container(
+                      ? Container(
                           height: 25,
                           width: 50,
                           decoration: BoxDecoration(
@@ -141,7 +135,7 @@ class SingleItem extends StatelessWidget {
                               ],
                             ),
                           ),
-                        )*/
+                        )
                       : Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Column(
@@ -157,7 +151,7 @@ class SingleItem extends StatelessWidget {
                               SizedBox(
                                 height: 5,
                               ),
-                              Container(
+                              /* Container(
                                 height: 25,
                                 width: 70,
                                 decoration: BoxDecoration(
@@ -174,7 +168,7 @@ class SingleItem extends StatelessWidget {
                                         size: 20,
                                       ),
                                       Text(
-                                        "$productQuatity",
+                                        '1',
                                         style: TextStyle(
                                           color: Colors.black,
                                         ),
@@ -187,7 +181,7 @@ class SingleItem extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                              ),
+                              ),*/
                             ],
                           ),
                         ),

@@ -7,6 +7,7 @@ import 'package:five_star/screens/singal_product.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/product_provider.dart';
+import '../screens/review_cart/review_cart.dart';
 
 class FoodHomeScreen extends StatefulWidget {
   const FoodHomeScreen({Key? key}) : super(key: key);
@@ -200,7 +201,7 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
             )),
         actions: [
           CircleAvatar(
-            radius: 12,
+            radius: 15,
             backgroundColor: Color(0xffd4d181),
             child: IconButton(
               onPressed: () {
@@ -222,12 +223,19 @@ class _FoodHomeScreenState extends State<FoodHomeScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: CircleAvatar(
-              radius: 12,
+              radius: 15,
               backgroundColor: Color(0xffd4d181),
-              child: Icon(
-                Icons.add_shopping_cart,
-                size: 17,
-                color: Colors.black,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ReviewCart()),
+                  );
+                },
+                icon: Icon(
+                  Icons.shopping_cart,
+                  size: 17,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

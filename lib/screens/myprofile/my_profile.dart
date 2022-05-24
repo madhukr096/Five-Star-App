@@ -1,10 +1,21 @@
 import 'package:five_star/config/color.dart';
+import 'package:five_star/models/user_model.dart';
+import 'package:five_star/providers/user_provider.dart';
 import 'package:five_star/screens/drawer.dart';
 import 'package:flutter/material.dart';
 
-class MyProfile extends StatelessWidget {
-  const MyProfile({Key? key}) : super(key: key);
+class MyProfile extends StatefulWidget {
+  var userData;
 
+  MyProfile({this.userData});
+
+  @override
+  State<MyProfile> createState() => _MyProfileState();
+}
+
+class _MyProfileState extends State<MyProfile> {
+  late UserProvider userProvider;
+  late UserModels userModels;
   Widget listTile({icon, title}) {
     return Column(
       children: [
@@ -34,6 +45,7 @@ class MyProfile extends StatelessWidget {
           style: TextStyle(color: textColor, fontSize: 18),
         ),
       ),
+      // drawer: DrawerSide(userProvider: userProvider),
       body: Stack(
         children: [
           Column(
@@ -70,7 +82,7 @@ class MyProfile extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Five star",
+                                    widget.userData.userName,
                                     style: TextStyle(
                                       color: textColor,
                                       fontSize: 14,
@@ -80,17 +92,19 @@ class MyProfile extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text('fivestar@gmail.com'),
+                                  Text(
+                                    widget.userData.userEmail,
+                                  ),
                                 ],
                               ),
                               CircleAvatar(
-                                radius: 15,
-                                backgroundColor: primaryColor,
+                                radius: 18,
+                                backgroundColor: Colors.black,
                                 child: CircleAvatar(
-                                  radius: 12,
+                                  radius: 15,
                                   child: Icon(
                                     Icons.edit,
-                                    color: primaryColor,
+                                    color: Colors.black,
                                   ),
                                   backgroundColor: scaffoldBackgroundColor,
                                 ),
@@ -123,7 +137,7 @@ class MyProfile extends StatelessWidget {
               radius: 50,
               backgroundColor: primaryColor,
               child: CircleAvatar(
-                backgroundImage: NetworkImage(
+                backgroundImage: NetworkImage(widget.userData.userImage ??
                     "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Free-Image.png"),
                 radius: 45,
                 backgroundColor: scaffoldBackgroundColor,

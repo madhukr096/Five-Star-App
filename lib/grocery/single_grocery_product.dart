@@ -45,6 +45,8 @@ class SingalGroceryProduct extends StatelessWidget {
                               product_Name: productName,
                               product_details: productDetails,
                               product_price: productDetails,
+                              productQuality: 1,
+                              productId: productId,
                             )));
                   },
                   child: Container(
