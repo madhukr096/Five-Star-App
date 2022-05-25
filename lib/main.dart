@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:five_star/providers/auth_provider.dart';
+import 'package:five_star/providers/check_out_provider.dart';
 import 'package:five_star/providers/product_provider.dart';
 import 'package:five_star/providers/review_cart_provider.dart';
 import 'package:five_star/providers/user_provider.dart';
@@ -52,6 +53,9 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider<WishListProvider>(
           create: (context) => WishListProvider(),
+        ),
+        ChangeNotifierProvider<CheckOutProvider>(
+          create: (context) => CheckOutProvider(),
         ),
       ],
       child: MaterialApp(

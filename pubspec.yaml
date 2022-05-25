@@ -44,6 +44,8 @@ dependencies:
   google_sign_in: ^5.3.1
   flutter_signin_button: ^2.0.0
   fluttertoast: ^8.0.9
+  location:
+  google_maps_flutter:
 
 
 dev_dependencies:
