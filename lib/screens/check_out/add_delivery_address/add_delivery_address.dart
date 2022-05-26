@@ -10,14 +10,14 @@ class AddDeliveryAddress extends StatefulWidget {
   State<AddDeliveryAddress> createState() => _AddDeliveryAddressState();
 }
 
-enum AddressType {
+enum addressType {
   Home,
   Work,
   Other,
 }
 
 class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
-  var myType = AddressType.Home;
+  var myType = addressType.Home;
   @override
   Widget build(BuildContext context) {
     CheckOutProvider checkOutProvider = Provider.of(context);
@@ -106,11 +106,11 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
+                /*Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => CostomGoogleMap(),
                   ),
-                );
+                );*/
               },
               child: Container(
                 height: 47,
@@ -131,12 +131,12 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
               title: Text("Address Type"),
             ),
             RadioListTile(
-              value: AddressType.Home,
+              value: addressType.Home,
               groupValue: myType,
               title: Text("Home"),
               onChanged: (value) {
                 setState(() {
-                  myType = AddressType.Home;
+                  myType = addressType.Home;
                 });
               },
               secondary: Icon(
@@ -145,12 +145,12 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
               ),
             ),
             RadioListTile(
-              value: AddressType.Work,
+              value: addressType.Work,
               groupValue: myType,
               title: Text("Work"),
               onChanged: (value) {
                 setState(() {
-                  myType = AddressType.Work;
+                  myType = addressType.Work;
                 });
               },
               secondary: Icon(
@@ -159,12 +159,12 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
               ),
             ),
             RadioListTile(
-              value: AddressType.Other,
+              value: addressType.Other,
               groupValue: myType,
               title: Text("Other"),
               onChanged: (value) {
                 setState(() {
-                  myType = AddressType.Other;
+                  myType = addressType.Other;
                 });
               },
               secondary: Icon(

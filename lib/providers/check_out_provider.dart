@@ -55,7 +55,7 @@ class CheckOutProvider with ChangeNotifier {
         "area": area.text,
         "city": city.text,
         "pincode": pincode.text,
-        "addressType": myType,
+        "addressType": myType.toString(),
       }).then((value) async {
         isloading = false;
         notifyListeners();
