@@ -1,15 +1,19 @@
-import 'package:five_star/models/delivery_address_model.dart';
+import 'package:five_star/config/color.dart';
 import 'package:five_star/providers/check_out_provider.dart';
-import 'package:five_star/screens/check_out/add_delivery_address/add_delivery_address.dart';
-import 'package:five_star/screens/check_out/delivery_details/single_delivery_item.dart';
-import 'package:five_star/screens/check_out/payment_summary/payment_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../config/color.dart';
+import '../check_out/add_delivery_address/add_delivery_address.dart';
+import '../check_out/delivery_details/single_delivery_item.dart';
 
-class DeliveryDetails extends StatelessWidget {
-  bool isAddress = false;
+class MyAddress extends StatefulWidget {
+  MyAddress({Key? key}) : super(key: key);
+
+  @override
+  State<MyAddress> createState() => _MyAddressState();
+}
+
+class _MyAddressState extends State<MyAddress> {
   @override
   Widget build(BuildContext context) {
     CheckOutProvider deliveryAddreesProvider = Provider.of(context);
@@ -19,7 +23,7 @@ class DeliveryDetails extends StatelessWidget {
         backgroundColor: primaryColor,
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
-          "Delivery Details",
+          "My Address",
           style: TextStyle(
             color: textColor,
             fontSize: 18,
@@ -37,35 +41,10 @@ class DeliveryDetails extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: Container(
-        //width: 160,
-        height: 40,
-        margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: MaterialButton(
-          child: deliveryAddreesProvider.getDeliveryAddressList.isEmpty
-              ? Text("Add new Address")
-              : Text("Payment Summary"),
-          onPressed: () {
-            if (deliveryAddreesProvider.getDeliveryAddressList.isEmpty) {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => AddDeliveryAddress()));
-            } else {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => PaymentSummary()));
-            }
-          },
-          color: primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-              30,
-            ),
-          ),
-        ),
-      ),
       body: ListView(
         children: [
           ListTile(
-            title: Text("Deliver To"),
+            title: Text("My Location"),
             leading: Image.asset(
               'assets/images/location.png',
               height: 30,

@@ -1,7 +1,10 @@
 import 'package:five_star/config/color.dart';
 import 'package:five_star/models/user_model.dart';
 import 'package:five_star/providers/user_provider.dart';
+import 'package:five_star/screens/about.dart';
 import 'package:five_star/screens/drawer.dart';
+import 'package:five_star/screens/myprofile/my_address.dart';
+import 'package:five_star/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyProfile extends StatefulWidget {
@@ -16,13 +19,14 @@ class MyProfile extends StatefulWidget {
 class _MyProfileState extends State<MyProfile> {
   late UserProvider userProvider;
   late UserModels userModels;
-  Widget listTile({icon, title}) {
+  Widget listTile({icon, title, onTap}) {
     return Column(
       children: [
         Divider(
           height: 1,
         ),
         ListTile(
+          onTap: onTap,
           leading: Icon(icon),
           title: Text(title),
           trailing: Icon(Icons.arrow_forward_ios),
@@ -97,7 +101,7 @@ class _MyProfileState extends State<MyProfile> {
                                   ),
                                 ],
                               ),
-                              CircleAvatar(
+                              /* CircleAvatar(
                                 radius: 18,
                                 backgroundColor: Colors.black,
                                 child: CircleAvatar(
@@ -108,7 +112,7 @@ class _MyProfileState extends State<MyProfile> {
                                   ),
                                   backgroundColor: scaffoldBackgroundColor,
                                 ),
-                              ),
+                              ),*/
                             ],
                           ),
                         ),
@@ -116,7 +120,15 @@ class _MyProfileState extends State<MyProfile> {
                     ),
                     listTile(icon: Icons.shop_outlined, title: "My Orders"),
                     listTile(
-                        icon: Icons.location_on_outlined, title: "My Address"),
+                        icon: Icons.location_on_outlined,
+                        title: "My Address",
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => MyAddress(),
+                            ),
+                          );
+                        }),
                     listTile(
                         icon: Icons.person_outline, title: "Refer a Friends"),
                     listTile(
@@ -124,8 +136,26 @@ class _MyProfileState extends State<MyProfile> {
                         title: "Terms & Conditions"),
                     listTile(
                         icon: Icons.policy_outlined, title: "Privacy Policy"),
-                    listTile(icon: Icons.add_chart, title: "About"),
-                    listTile(icon: Icons.exit_to_app_outlined, title: "Logout"),
+                    listTile(
+                        icon: Icons.add_chart,
+                        title: "About",
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => About(),
+                            ),
+                          );
+                        }),
+                    listTile(
+                        icon: Icons.exit_to_app_outlined,
+                        title: "Logout",
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => WelcomeScreen(),
+                            ),
+                          );
+                        }),
                   ],
                 ),
               ),

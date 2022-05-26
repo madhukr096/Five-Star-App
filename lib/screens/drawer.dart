@@ -2,6 +2,8 @@ import 'package:five_star/grocery/groceryHomepage.dart';
 import 'package:five_star/models/user_model.dart';
 import 'package:five_star/providers/user_provider.dart';
 import 'package:five_star/screens/Homepage.dart';
+import 'package:five_star/screens/notification.dart';
+import 'package:five_star/screens/myprofile/my_address.dart';
 import 'package:five_star/screens/myprofile/my_profile.dart';
 import 'package:five_star/screens/review_cart/review_cart.dart';
 import 'package:five_star/screens/welcome_screen.dart';
@@ -155,8 +157,26 @@ class _DrawerSideState extends State<DrawerSide> {
                     ),
                   );
                 }),
-            listTile(icon: Icons.notifications_outlined, title: "Notification"),
-            listTile(icon: Icons.place_outlined, title: "My Address"),
+            listTile(
+                icon: Icons.notifications_outlined,
+                title: "Notification",
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => Notify(),
+                    ),
+                  );
+                }),
+            listTile(
+                icon: Icons.place_outlined,
+                title: "My Address",
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => MyAddress(),
+                    ),
+                  );
+                }),
             listTile(icon: Icons.star_outline, title: "Ratings & Reviews"),
             listTile(
                 icon: Icons.privacy_tip_outlined, title: "Privacy & Security"),

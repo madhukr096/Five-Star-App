@@ -69,9 +69,10 @@ class ReviewCart extends StatelessWidget {
             onPressed: () {
               if (reviewCartProvider.getReviewCartDataList.isEmpty) {
                 Fluttertoast.showToast(msg: 'No Cart Data Found');
-              }
+              }else{
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => DeliveryDetails()));
+              }
             },
           ),
         ),
@@ -89,7 +90,7 @@ class ReviewCart extends StatelessWidget {
       ),
       body: reviewCartProvider.getReviewCartDataList.isEmpty
           ? Center(
-              child: Text("NODATA"),
+              child: Text("NO DATA"),
             )
           : ListView.builder(
               itemCount: reviewCartProvider.getReviewCartDataList.length,
