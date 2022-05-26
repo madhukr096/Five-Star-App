@@ -104,7 +104,7 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
               labText: "Pincode",
               controller: checkOutProvider.pincode,
             ),
-            InkWell(
+            /* InkWell(
               onTap: () {
                 /*Navigator.of(context).push(
                   MaterialPageRoute(
@@ -126,7 +126,7 @@ class _AddDeliveryAddressState extends State<AddDeliveryAddress> {
             ),
             Divider(
               color: Colors.black,
-            ),
+            ),*/
             ListTile(
               title: Text("Address Type"),
             ),

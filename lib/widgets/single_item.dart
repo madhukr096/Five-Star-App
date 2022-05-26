@@ -30,10 +30,10 @@ class SingleItem extends StatefulWidget {
 }
 
 class _SingleItemState extends State<SingleItem> {
-  late int count;
+  var count;
   getCount() {
     setState(() {
-      count = widget.productQuatity!;
+      count = widget.productQuatity;
     });
   }
 

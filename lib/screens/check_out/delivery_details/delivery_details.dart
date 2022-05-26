@@ -1,22 +1,19 @@
+import 'package:five_star/models/delivery_address_model.dart';
+import 'package:five_star/providers/check_out_provider.dart';
 import 'package:five_star/screens/check_out/add_delivery_address/add_delivery_address.dart';
 import 'package:five_star/screens/check_out/delivery_details/single_delivery_item.dart';
 import 'package:five_star/screens/check_out/payment_summary/payment_summary.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../config/color.dart';
 
 class DeliveryDetails extends StatelessWidget {
-  List<Widget> address = [
-    SingleDeliveryItem(
-      title: 'FIVE STAR',
-      address: 'LVP Boys Hostel, Dairy Circle, Hassan  Pincode -573201',
-      number: '7259741181',
-      addressType: 'Home',
-    ),
-  ];
   bool isAddress = false;
   @override
   Widget build(BuildContext context) {
+    CheckOutProvider deliveryAddreesProvider = Provider.of(context);
+    deliveryAddreesProvider.getDeliveryAddrressData();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: primaryColor,
@@ -45,11 +42,11 @@ class DeliveryDetails extends StatelessWidget {
           height: 40,
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
           child: MaterialButton(
-            child: address.isEmpty
+            child: deliveryAddreesProvider.getDeliveryAddressList.isEmpty
                 ? Text("Add new Address")
                 : Text("Payment Summary"),
             onPressed: () {
-              address == null
+              deliveryAddreesProvider.getDeliveryAddressList == null
                   ? Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => AddDeliveryAddress()))
                   : Navigator.of(context).push(MaterialPageRoute(
@@ -75,10 +72,35 @@ class DeliveryDetails extends StatelessWidget {
             Divider(
               height: 1,
             ),
-            Column(
-              children: [
-                address.isEmpty
-                    ? Container()
+            deliveryAddreesProvider.getDeliveryAddressList.isEmpty
+                ? Container(
+                    child: Center(
+                      child: Text("NO DATA"),
+                    ),
+                  )
+                : Column(
+                    children:
+                        deliveryAddreesProvider.getDeliveryAddressList.map((e) {
+                      return SingleDeliveryItem(
+                        title: '${e.firstName}, ${e.lastName}',
+                        address:
+                            "${e.homeNo},${e.street},${e.landmark},${e.area},${e.city},${e.pincode}",
+                        number: '${e.mobileNo}',
+                        addressType: e.addressType == "addressType.Home"
+                            ? "Home"
+                            : e.addressType == "addressType.Work"
+                                ? "Work"
+                                : "Other",
+                      );
+                    }).toList(),
+
+                    /*children: [
+                deliveryAddreesProvider.getDeliveryAddressList.isEmpty
+                    ? Container(
+                        child: Center(
+                          child: Text("NO DATA"),
+                        ),
+                      )
                     : SingleDeliveryItem(
                         title: 'MADHU K R',
                         address:
@@ -86,8 +108,8 @@ class DeliveryDetails extends StatelessWidget {
                         number: '7259741181',
                         addressType: 'Home',
                       ),
-              ],
-            )
+              ],*/
+                  )
           ],
         ));
   }
