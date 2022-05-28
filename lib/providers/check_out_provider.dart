@@ -26,9 +26,10 @@ class CheckOutProvider with ChangeNotifier {
       Fluttertoast.showToast(msg: "Lastname is Empty");
     } else if (mobileNo.text.isEmpty) {
       Fluttertoast.showToast(msg: "Mbile Number is Empty");
-    } else if (alternativeMobileNo.text.isEmpty) {
+    } /*else if (alternativeMobileNo.text.isEmpty) {
       Fluttertoast.showToast(msg: "Alternative Mobile Number is Empty");
-    } else if (homeNo.text.isEmpty) {
+    } */
+    else if (homeNo.text.isEmpty) {
       Fluttertoast.showToast(msg: "Home Number is Empty");
     } else if (street.text.isEmpty) {
       Fluttertoast.showToast(msg: "Street is Empty");

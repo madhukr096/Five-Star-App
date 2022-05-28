@@ -4,6 +4,7 @@ import 'package:five_star/providers/user_provider.dart';
 import 'package:five_star/screens/about.dart';
 import 'package:five_star/screens/drawer.dart';
 import 'package:five_star/screens/myprofile/my_address.dart';
+import 'package:five_star/screens/terms.dart';
 import 'package:five_star/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -133,7 +134,14 @@ class _MyProfileState extends State<MyProfile> {
                         icon: Icons.person_outline, title: "Refer a Friends"),
                     listTile(
                         icon: Icons.file_copy_outlined,
-                        title: "Terms & Conditions"),
+                        title: "Terms & Conditions",
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => TermsAndCondition(),
+                            ),
+                          );
+                        }),
                     listTile(
                         icon: Icons.policy_outlined, title: "Privacy Policy"),
                     listTile(
